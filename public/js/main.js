@@ -3,6 +3,16 @@ $(document).ready(function(){
   /* baseurl */
   var baseUrl = $("#baseurl").val();
 
+  $( "#productsMenu" ).click(function() {
+    $( "#containerCategory" ).hide();
+    $( "#containerProduct" ).show();
+  })
+
+  $( "#categoryMenu" ).click(function() {
+    $( "#containerCategory" ).show();
+    $( "#containerProduct" ).hide();
+  })
+
   $( "#form-registerUser" ).submit(function( event ) {
       event.preventDefault();
       var error = false;

@@ -4,38 +4,40 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <p id="productsMenu">Products</p>
-      <div class="containerProduct">
-        <table class="table table-striped">
-					<tbody id="resultGetProduct">
+      <p id="productsMenu" class="btn btn-primary">Products</p>
+      <div id="containerProduct" class="containerProduct">
+        <div class="containerProductList">
+          <table class="table table-striped">
+  					<tbody id="resultGetProduct">
 
-					</tbody>
-				</table>
+  					</tbody>
+  				</table>
 
+        </div>
+        <form id="form-registerProduct">
+          <div class="row">
+              <div class="col-md-12">
+                <label for="name">Name</label>
+                <input type="text" v-name='name' name="name" id="name" class="form-control">
+              </div>
+              <div class="col-md-12">
+                <label for="quantity">quantity</label>
+                <input type="text" v-name='quantity' name="quantity" id="quantity" class="form-control">
+              </div>
+              <div class="col-md-12">
+                <label for="category_id">category_id</label>
+                <input type="number" v-name='category_id' name="category_id" id="category_id" class="form-control">
+              </div>
+          </div>
+          <div class="row">
+            <button type="submit" id="btn-registerUser" class="btn btn-primary">Register</button>
+          </div>
+        </form>
       </div>
-      <form id="form-registerProduct">
-        <div class="row">
-            <div class="col-md-12">
-              <label for="name">Name</label>
-              <input type="text" v-name='name' name="name" id="name" class="form-control">
-            </div>
-            <div class="col-md-12">
-              <label for="quantity">quantity</label>
-              <input type="text" v-name='quantity' name="quantity" id="quantity" class="form-control">
-            </div>
-            <div class="col-md-12">
-              <label for="category_id">category_id</label>
-              <input type="number" v-name='category_id' name="category_id" id="category_id" class="form-control">
-            </div>
-        </div>
-        <div class="row">
-          <button type="submit" id="btn-registerUser" class="btn btn-primary">Register</button>
-        </div>
-      </form>
     </div>
     <div class="col-6">
-      <p id="categoryMenu">Category</p>
-      <div class="containerCategory">
+      <p id="categoryMenu" class="btn btn-primary">Category</p>
+      <div id="categoryMenu" class="containerCategory">
         <table class="table table-striped">
           <tbody id="resultGetCategories">
 

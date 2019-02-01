@@ -2,18 +2,22 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>My Page Title</title>
+        <title>Prueba Manpower</title>
         <link rel="stylesheet" href="{{baseUrl}}/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{baseUrl}}/public/css/sweetalert2.min.css">
         <link rel="stylesheet" href="{{baseUrl}}/public/css/main.min.css">
     </head>
-    <body>        
-       <h2>Welcome to slim framework!</h2>
-       <h3>baseUrl: {{baseUrl}}</h3>
+    <body>
 
+        {% block container %}
+        {% endblock %}
+
+        <input type="hidden" name="baseurl" id="baseurl" class="baseurl" value="{{baseUrl}}">
 
        <script src="{{baseUrl}}/public/js/jquery-3.3.1.min.js"></script>
        <script src="{{baseUrl}}/public/js/popper.min.js"></script>
        <script src="{{baseUrl}}/public/js/bootstrap.min.js"></script>
+       <script src="{{baseUrl}}/public/js/sweetalert2.min.js"></script>
        <script src="{{baseUrl}}/public/js/main.js"></script>
     </body>
 </html>

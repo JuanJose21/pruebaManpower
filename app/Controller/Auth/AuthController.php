@@ -7,7 +7,11 @@ class AuthController extends Controller
 {
 	public function signin($request, $response)
 	{
-		return $this->view->render($response, 'auth/layout.twig');
+		if(isset($_SESSION['user'])){
+			return $response->withRedirect($this->router->pathFor('crud'));
+		}else{
+			return $this->view->render($response, 'auth/layout.twig');
+		}
 	}
 
 	public function postSignin($request, $response)
@@ -20,8 +24,15 @@ class AuthController extends Controller
 		if($auth){
 			return $response->withRedirect($this->router->pathFor('home'));
 		}else{
-			$this->flash->addMessage('error','Login failed; Invalid user or password');			
+			$this->flash->addMessage('error','Usuario y contraseña equivocados, por favor verifique.');
 			return $response->withRedirect($this->router->pathFor('signin'));
 		}
+	}
+
+	public function logout($request, $response)
+	{
+		$_SESSION = array();
+		session_destroy();
+		return $response->withRedirect($this->router->pathFor('signin'));
 	}
 }

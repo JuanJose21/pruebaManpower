@@ -2,14 +2,14 @@
 use Phpmig\Migration\Migration;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class post extends Migration
+class categories extends Migration
 {
     /**
      * Do the migration
      */
     public function up()
     {
-        Capsule::schema()->create('post', function($table)
+        Capsule::schema()->create('categories', function($table)
         {
             $table->increments('id');
             
@@ -22,6 +22,6 @@ class post extends Migration
      */
     public function down()
     {
-        Capsule::schema()->drop('post');
+        Capsule::schema()->drop('categories');
     }
 }

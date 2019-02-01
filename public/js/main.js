@@ -42,11 +42,13 @@ $(document).ready(function(){
           url: baseUrl + '/api/productos/listar',
           dataType: 'json',
           success: function(response){
+            $("#resultGetProduct").empty();
               $.each(response.data,function(index,value){
                   nombre = value['name'];
                   cantidad = value['quantity'];
                   id = value['id'];
-                  $("#selectProducts").append('<option value=' + id + '>' + nombre + '</option>');
+
+                  $("#resultGetProduct").append('<tr><th class="eventoColumn">' + nombre + '</th><td>' + cantidad + '</td><td> <p id="' + id + '">Editar</p></td><td><p id="' + id + '">Eliminar</p></td></tr>');
               })
           },
           error: function(response){
@@ -56,6 +58,65 @@ $(document).ready(function(){
     }
 
     getProducts();
+
+
+    /*
+    * Function Get products
+    */
+    function getCategories(){
+      return $.ajax({
+          type: 'GET',
+          url: baseUrl + '/api/categoria/listar',
+          dataType: 'json',
+          success: function(response){
+            $("#resultGetCategories").empty();
+              $.each(response.data,function(index,value){
+                  nombre = value['name'];
+                  cantidad = value['quantity'];
+                  id = value['id'];
+
+                  $("#resultGetCategories").append('<tr><th class="eventoColumn">' + nombre + '</th><td> <p id="' + id + '">Editar</p></td><td><p id="' + id + '">Eliminar</p></td></tr>');
+              })
+          },
+          error: function(response){
+              console.log('error al consultar evento');
+          }
+      })
+    }
+
+    getCategories();
+
+
+    $( "#form-registerProduct" ).submit(function( event ) {
+        event.preventDefault();
+        var error = false;
+        var mensaje = '';
+        validarcampos  = validarCampos('#form-registerProduct',error,mensaje);
+        mensaje = validarcampos.mensaje;
+        error=validarcampos.error;
+        if(error){
+            createAlert('Error', mensaje);
+        }else{
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-registerProduct').serialize(),
+                url: baseUrl + '/api/productos/crear',
+                success: function(response){
+                    if(response.status){
+                        createAlert('Exito', 'Se ha creado el producto');
+                        $("#form-registerProduct")[0].reset();
+                        getProducts();
+                    }else{
+                        createAlert('Atención', response.message);
+                    }
+                },
+                error: function(response){
+                    console.log('Error');
+                }
+            })/*end ajax*/
+        }
+      });
 
 
     function validarCampos(form, error, mensaje){

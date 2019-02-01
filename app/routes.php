@@ -8,9 +8,14 @@ $app->group('', function() use ($app) {
 
 $app->group('/api', function() use ($app) {
 		$app->post('/registerUser', 'ApiController:registerUser');
-		
+
 		$app->group('/productos', function() use ($app) {
 			$app->get('/listar', 'ProductsController:listar');
+			$app->post('/crear', 'ProductsController:crear');
+		});
+
+		$app->group('/categoria', function() use ($app) {
+			$app->get('/listar', 'CategoryController:listar');
 		});
 });
 

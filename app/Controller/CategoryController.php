@@ -8,7 +8,7 @@ class CategoryController extends Controller
     {
       $data = $request->getParams();
 
-      $categorias = Category::select("*");
+      $categorias = Category::select("*")
       ->get();
 
       if($categorias){

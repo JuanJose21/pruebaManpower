@@ -63,9 +63,7 @@ Command Line
 >php skeleton rollback
 
 
-
-About us
---------
->**[@braian125](https://twitter.com/braian125)**
+>**Correr proyecto**
 >
->**[@julianhm9612](https://twitter.com/julianhm9612)**
+>php -S 127.0.0.1:9000 -t .
+>

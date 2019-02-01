@@ -12,7 +12,8 @@ class categories extends Migration
         Capsule::schema()->create('categories', function($table)
         {
             $table->increments('id');
-            
+            $table->string('name');
+
             $table->timestamps();
         });
     }

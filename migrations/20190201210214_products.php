@@ -11,8 +11,13 @@ class products extends Migration
     {
         Capsule::schema()->create('products', function($table)
         {
+            $table->charset ='utf8';
+            $table->collation='utf8_spanish_ci';
             $table->increments('id');
-            
+            $table->integer('category_id');
+            $table->string('name',3,50);
+            $table->integer('quantity');
+
             $table->timestamps();
         });
     }
